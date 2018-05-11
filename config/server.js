@@ -1,7 +1,12 @@
-var express = require('express')();
+var express = require('express');
+var consign = require('consign');
 
-express.set('view engine', 'ejs');
+var app = express();
 
-express.set('views','./app/views');
+app.set('view engine', 'ejs');
 
-module.exports = express;
+app.set('views','./app/views');
+
+consign().include('app/routes').into(app);
+
+module.exports = app;
